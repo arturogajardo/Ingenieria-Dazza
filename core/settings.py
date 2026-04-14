@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'arriendos',
     'django.contrib.humanize',
+    'anymail',
 ]
 
 MIDDLEWARE = [
@@ -154,11 +155,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Solo deja esta línea activa para simular los correos en la terminal:
 # Configuración para enviar correos de verdad mediante Gmail
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_USE_TLS = True
-EMAIL_PORT = 587
+# Configuración para usar la API de SendGrid
+EMAIL_BACKEND = "anymail.backends.sendgrid.EmailBackend"
 
-# Le pedimos el usuario y la contraseña al sistema
-EMAIL_HOST_USER = os.environ.get('EMAIL_USER', 'gajardo.arturo@gmail.com') 
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
+ANYMAIL = {
+    # Render nos pasará esta clave de forma segura
+    "SENDGRID_API_KEY": os.environ.get("SENDGRID_API_KEY"),
+}
+
+# El correo desde el que saldrán los mensajes (Debe ser el que verificaste en el paso 1)
+DEFAULT_FROM_EMAIL = 'gajardo.arturo@gmail.com'
