@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Ingeniería Díazza SpA{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .btn-industrial { background-color: #ffc107; color: #000; font-weight: bold; }
+        .btn-industrial:hover { background-color: #e0a800; color: #000; }
+        .card-maquina:hover { transform: translateY(-5px); transition: 0.3s; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body class="bg-light d-flex flex-column min-vh-100">
+
+    <div class="bg-dark text-white py-2">
+        <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center small">
+            <div>
+                📞 +56 9 1234 5678 &nbsp; | &nbsp; ✉️ contacto@ingenieriadiazza.cl
+            </div>
+            <div class="mt-1 mt-md-0 text-warning fw-bold">
+                Especialistas en Maquinaria
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-warning shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-3 text-dark" href="{% url 'catalogo' %}">
+                🚜 Ingeniería Díazza <span class="text-white">SpA</span>
+            </a>
+        </div>
+    </nav>
+
+    <main class="flex-grow-1">
+        {% block content %}
+        {% endblock content %}
+    </main>
+
+    <footer class="bg-dark text-light py-5 mt-auto">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <h4 class="text-warning fw-bold">Ingeniería Díazza SpA</h4>
+                    <p class="text-secondary">Arriendo de maquinaria pesada y soluciones integrales para proyectos de minería y construcción. Calidad y compromiso en terreno.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <h5 class="text-white">Contacto Rápido</h5>
+                    <p class="mb-1 text-secondary">📍 Dirección de tu empresa, Ciudad</p>
+                    <p class="mb-1 text-secondary">📞 +56 9 1234 5678</p>
+                    <p class="mb-0 text-secondary">✉️ contacto@ingenieriadiazza.cl</p>
+                </div>
+            </div>
+            <hr class="border-secondary mt-4">
+            <div class="text-center text-secondary small">
+                &copy; 2024 Ingeniería Díazza SpA - Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

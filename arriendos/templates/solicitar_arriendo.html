@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title %}Cotizar {{ maquina.nombre }} - Ingeniería Díazza SpA{% endblock %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+    
+    <a href="{% url 'catalogo' %}" class="btn btn-outline-secondary mb-4">&larr; Volver al catálogo</a>
+
+    <div class="card border-0 shadow-lg overflow-hidden">
+        <div class="row g-0">
+            
+            <div class="col-md-6 bg-white d-flex align-items-center justify-content-center p-4">
+                {% if maquina.imagen %}
+                    <img src="{{ maquina.imagen.url }}" alt="{{ maquina.nombre }}" class="img-fluid rounded">
+                {% else %}
+                    <p class="text-muted">Imagen no disponible</p>
+                {% endif %}
+            </div>
+
+            <div class="col-md-6 bg-dark text-white p-5 d-flex flex-column justify-content-center">
+                <h2 class="fw-bold mb-3 text-warning">{{ maquina.nombre }}</h2>
+                <p class="mb-4">{{ maquina.descripcion }}</p>
+                
+                <div class="p-3 bg-secondary bg-opacity-25 rounded mb-4">
+                    <h4 class="mb-0 text-white fw-bold">Valor Referencial: ${{ maquina.precio_formateado }} / día</h4>
+                </div>
+                
+                <hr class="border-secondary mb-4">
+                <h5 class="mb-3">Solicitar Cotización</h5>
+
+                <form method="POST">
+                    {% csrf_token %} 
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label text-light">Nombre Completo</label>
+                        <input type="text" class="form-control bg-dark text-white border-secondary" id="nombre" name="nombre" required>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="email" class="form-label text-light">Correo Electrónico</label>
+                            <input type="email" class="form-control bg-dark text-white border-secondary" id="email" name="email" required>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <label for="telefono" class="form-label text-light">Teléfono</label>
+                            <input type="text" class="form-control bg-dark text-white border-secondary" id="telefono" name="telefono" placeholder="+569..." required>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="fecha_inicio" class="form-label text-light">Fecha de Inicio</label>
+                            <input type="date" class="form-control bg-dark text-white border-secondary" id="fecha_inicio" name="fecha_inicio" required>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <label for="fecha_fin" class="form-label text-light">Fecha de Término</label>
+                            <input type="date" class="form-control bg-dark text-white border-secondary" id="fecha_fin" name="fecha_fin" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-warning btn-lg w-100 fw-bold">Enviar Solicitud</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}
