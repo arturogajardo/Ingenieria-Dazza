@@ -68,7 +68,7 @@ def solicitar_arriendo(request, maquina_id):
         # Enviar ambos (Asegúrate de que recipient_list sea una lista [])
         try:
             # Enviar al cliente
-            send_mail(asunto_cliente, mensaje_cliente, settings.EMAIL_HOST_USER, [email_usuario])
+            send_mail(asunto_cliente, mensaje_cliente, settings.DEFAULT_FROM_EMAIL, [email_usuario])
             # Enviar a tu correo personal (pon tu correo real aquí abajo)
             send_mail(asunto_admin, mensaje_admin, settings.EMAIL_HOST_USER, ['gajardo.arturo@gmail.com'])
         except Exception as e:

@@ -157,11 +157,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Configuración para enviar correos de verdad mediante Gmail
 # Configuración para usar la API de SendGrid
 EMAIL_BACKEND = "anymail.backends.sendgrid.EmailBackend"
+DEFAULT_FROM_EMAIL = "gajardo.arturo@gmail.com"
 
 ANYMAIL = {
-    # Render nos pasará esta clave de forma segura
     "SENDGRID_API_KEY": os.environ.get("SENDGRID_API_KEY"),
 }
-
-# El correo desde el que saldrán los mensajes (Debe ser el que verificaste en el paso 1)
-DEFAULT_FROM_EMAIL = 'gajardo.arturo@gmail.com'
